@@ -1,0 +1,87 @@
+---
+/**
+ * Full-screen loader with grid animation.
+ * Fades out after content loads.
+ */
+---
+
+<div id="loader" class="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <div class="loader__grid">
+      {Array.from({ length: 9 }).map((_, i) => (
+        <div class="loader__cell" style={`--i: ${i}`} />
+      ))}
+    </div>
+    <div class="loader__label">Renegade Spots</div>
+  </div>
+</div>
+
+<style>
+  .loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: oklch(6% .025 240);
+    transition: opacity .5s cubic-bezier(.4, 0, .2, 1),
+                visibility .5s;
+  }
+
+  .loader.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .loader__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .loader__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    width: 63px;
+    height: 63px;
+    filter: url(#bloom-filter);
+  }
+
+  .loader__cell {
+    background: oklch(75% .15 195);
+    border-radius: 2px;
+    animation: cellChase 3s cubic-bezier(.4, 0, .6, 1) infinite;
+    animation-delay: calc(var(--i) * 0.2s);
+  }
+
+  @keyframes cellChase {
+    0%, 100% { opacity: .08; transform: scale(.7); }
+    20% { opacity: 1; transform: scale(1.05); box-shadow: 0 0 8px oklch(75% .15 195 / .5); }
+    40% { opacity: .3; transform: scale(.9); }
+  }
+
+  .loader__label {
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    color: var(--text-dim);
+    opacity: .6;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .loader__cell { animation: none; opacity: .5; }
+  }
+</style>
+
+<script>
+  const loader = document.getElementById('loader');
+  if (loader) {
+    setTimeout(() => loader.classList.add('is-hidden'), 800);
+  }
+</script>

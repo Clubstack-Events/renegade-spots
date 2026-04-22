@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Loader from '../components/Loader.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Spots from '../components/Spots.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Renegade Spots — Brooklyn">
+  <Loader />
+  <Nav />
+  <main>
+    <Hero />
+    <Spots />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  main {
+    position: relative;
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
+  );
+
+  document.querySelectorAll('.spot').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

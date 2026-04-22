@@ -1,0 +1,10 @@
+{
+  "tags": ["Renegade", "Brooklyn, NY"],
+  "details": [
+    { "label": "Spots", "value": "4 Locations" },
+    { "label": "Borough", "value": "Brooklyn" },
+    { "label": "Terrain", "value": "Industrial / Waterfront" },
+    { "label": "Window", "value": "2–5 hrs" }
+  ],
+  "subtitle": "A survey of Brooklyn's best renegade-viable industrial and waterfront locations. Dead-ends, loading docks, and forgotten lots — ranked by feasibility, transit access, and precinct tolerance."
+}

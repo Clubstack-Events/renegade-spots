@@ -1,0 +1,94 @@
+[
+  {
+    "id": "scott-ave",
+    "name": "114 Scott Ave",
+    "neighborhood": "East Williamsburg",
+    "rank": 1,
+    "tagline": "Historic warehouse party corridor. Dead-end near Morgan Ave L.",
+    "vibe": "Graffiti warehouses, shipping containers, open paved lot. The Brooklyn warehouse party corridor (2005–2018).",
+    "zoning": "M1-1 / M1-2",
+    "transit": "Morgan Ave L (8 min walk)",
+    "precinct": "83rd",
+    "window": "3–5 hours",
+    "views": "Industrial grit",
+    "setup": "Against warehouse wall, facing the dead end. Sound directed away from Varick Ave.",
+    "exit": "Multiple routes — crowd scatters toward Morgan Ave L in under 10 min. Metropolitan Ave, Flushing Ave also accessible.",
+    "why": "Best transit, best zoning, most event-friendly corridor. 83rd Precinct deprioritizes industrial noise. Neighbors are acclimated to parties.",
+    "risks": "Morgan Ave foot traffic = some visibility. 90th/83rd precinct boundary. Gentrification closing the window on these lots.",
+    "map": {
+      "lat": 40.7114,
+      "lng": -73.9334,
+      "zoom": 17,
+      "query": "114+Scott+Ave,+Brooklyn,+NY"
+    }
+  },
+  {
+    "id": "red-hook",
+    "name": "Red Hook Waterfront",
+    "neighborhood": "Red Hook",
+    "rank": 2,
+    "tagline": "Dead-end streets at the waterfront. Manhattan skyline + Statue of Liberty.",
+    "vibe": "Fenced industrial lots, waterfront dead-ends. Pioneer Works corridor energy.",
+    "zoning": "M2-1",
+    "transit": "Ferry + B61 bus (no subway)",
+    "precinct": "76th",
+    "window": "2–4 hours",
+    "views": "Manhattan skyline + Statue of Liberty",
+    "setup": "Sullivan St preferred over Wolcott — better dispersal toward Van Brunt in multiple directions.",
+    "exit": "Sullivan has multiple routes toward Van Brunt. Wolcott dead-ends at water = single exit, avoid.",
+    "why": "Best views on the list. 76th Precinct covers huge area, slow response in Red Hook. No subway = natural crowd cap.",
+    "risks": "No subway access. Dead-end dispersal on some streets. Coast Guard waterfront patrols. Cruise terminal security nearby.",
+    "map": {
+      "lat": 40.6748,
+      "lng": -74.0143,
+      "zoom": 17,
+      "query": "Sullivan+St+%26+Wolcott+St,+Red+Hook,+Brooklyn,+NY"
+    }
+  },
+  {
+    "id": "newtown-creek",
+    "name": "Grand St / Newtown Creek",
+    "neighborhood": "East Williamsburg",
+    "rank": 3,
+    "tagline": "Industrial waterfront along Newtown Creek. Loading docks provide natural acoustic reinforcement.",
+    "vibe": "Warehouses, light manufacturing. Three-sided sheds and loading docks for natural shade + sound.",
+    "zoning": "M1-1 / M1-2",
+    "transit": "Grand St L (5 min walk)",
+    "precinct": "83rd",
+    "window": "3–4 hours",
+    "views": "Creek + industrial",
+    "setup": "Use loading dock structures for shade and acoustic reinforcement. Set back from Grand St for less visibility.",
+    "exit": "Grand St is a major thoroughfare — excellent dispersal in all directions.",
+    "why": "Excellent transit, good dispersal, moderate environmental risk. 83rd Precinct, same low-priority approach as Scott Ave.",
+    "risks": "More through-traffic on Grand St = more visible. Newtown Creek Superfund adjacency. 83rd/104th precinct boundary.",
+    "map": {
+      "lat": 40.7131,
+      "lng": -73.9371,
+      "zoom": 17,
+      "query": "1245+Grand+St,+Brooklyn,+NY"
+    }
+  },
+  {
+    "id": "apollo-st",
+    "name": "151 Apollo St",
+    "neighborhood": "Greenpoint",
+    "rank": 4,
+    "tagline": "Dead-end at Newtown Creek waterfront. Manhattan skyline views.",
+    "vibe": "Industrial warehouses at a dead-end. Manhattan skyline views from the waterfront edge.",
+    "zoning": "M3-1",
+    "transit": "Nassau Ave G (12 min walk)",
+    "precinct": "94th",
+    "window": "2–3 hours",
+    "views": "Manhattan skyline",
+    "setup": "Waterfront lots at end of Apollo St. Do NOT use generator — fuel on contaminated soil = federal liability.",
+    "exit": "Single exit route back up Apollo to Meeker Ave. Weakest dispersal on the list.",
+    "why": "Great views, heavy manufacturing zoning. Viable if other spots are blocked.",
+    "risks": "Epicenter of Greenpoint oil spill (17-30M gallons). Explosive methane underground. 94th Precinct more responsive. EPA/Newtown Creek Alliance monitors active.",
+    "map": {
+      "lat": 40.7268,
+      "lng": -73.9515,
+      "zoom": 17,
+      "query": "151+Apollo+St,+Brooklyn,+NY"
+    }
+  }
+]

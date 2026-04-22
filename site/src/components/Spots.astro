@@ -1,0 +1,251 @@
+---
+import spots from '../data/spots.json';
+---
+
+<section id="spots">
+  <div class="container">
+    <div class="section-label">Locations</div>
+    <div class="spots">
+      {spots.map((spot) => (
+        <article class="card spot" id={spot.id}>
+          <div class="spot__header">
+            <div class="spot__rank">#{spot.rank}</div>
+            <div class="spot__title-group">
+              <h3 class="spot__name">{spot.name}</h3>
+              <span class="spot__hood">{spot.neighborhood}</span>
+            </div>
+            <span class={`badge badge--${spot.rank <= 2 ? 'high' : spot.rank === 3 ? 'medium' : 'low'}`}>
+              {spot.window}
+            </span>
+          </div>
+
+          <p class="spot__tagline">{spot.tagline}</p>
+
+          <div class="spot__map-wrap">
+            <iframe
+              class="spot__map"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${spot.map.query}&center=${spot.map.lat},${spot.map.lng}&zoom=${spot.map.zoom}&maptype=satellite`}
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="spot__grid">
+            <div class="spot__meta">
+              <div class="spot__meta-item">
+                <span class="spot__meta-label">Zoning</span>
+                <span class="spot__meta-value">{spot.zoning}</span>
+              </div>
+              <div class="spot__meta-item">
+                <span class="spot__meta-label">Transit</span>
+                <span class="spot__meta-value">{spot.transit}</span>
+              </div>
+              <div class="spot__meta-item">
+                <span class="spot__meta-label">Precinct</span>
+                <span class="spot__meta-value">{spot.precinct}</span>
+              </div>
+              <div class="spot__meta-item">
+                <span class="spot__meta-label">Views</span>
+                <span class="spot__meta-value">{spot.views}</span>
+              </div>
+            </div>
+
+            <div class="spot__details">
+              <div class="spot__detail-block">
+                <h4>Setup</h4>
+                <p>{spot.setup}</p>
+              </div>
+              <div class="spot__detail-block">
+                <h4>Exit Routes</h4>
+                <p>{spot.exit}</p>
+              </div>
+              <div class="spot__detail-block">
+                <h4>Why Here</h4>
+                <p>{spot.why}</p>
+              </div>
+              <div class="spot__detail-block">
+                <h4>Risks</h4>
+                <p class="spot__risks">{spot.risks}</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .spots {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .spot {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity .5s var(--ease), transform .5s var(--ease);
+  }
+
+  .spot:nth-child(2) { transition-delay: .06s; }
+  .spot:nth-child(3) { transition-delay: .12s; }
+  .spot:nth-child(4) { transition-delay: .18s; }
+
+  .spot.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .spot__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+  }
+
+  .spot__rank {
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    font-weight: 700;
+    color: var(--accent);
+    background: oklch(75% .15 195 / .1);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+  }
+
+  .spot__title-group {
+    flex: 1;
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+  }
+
+  .spot__name {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .spot__hood {
+    font-family: var(--font-mono);
+    font-size: .65rem;
+    color: var(--text-dim);
+    letter-spacing: .06em;
+  }
+
+  .spot__tagline {
+    font-size: .9rem;
+    color: var(--text-muted);
+    margin-bottom: var(--space-lg);
+    line-height: 1.5;
+  }
+
+  .spot__map-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 45%;
+    margin-bottom: var(--space-lg);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .spot__map {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: saturate(.8) brightness(.85) contrast(1.1);
+    transition: filter var(--duration) var(--ease);
+  }
+
+  .spot__map-wrap:hover .spot__map {
+    filter: saturate(1) brightness(.9) contrast(1);
+  }
+
+  .spot__grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .spot__meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background: var(--bg-surface);
+    border-radius: var(--radius-md);
+    border: 1px solid oklch(18% .02 240);
+  }
+
+  .spot__meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .spot__meta-label {
+    font-family: var(--font-mono);
+    font-size: .6rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--text-dim);
+  }
+
+  .spot__meta-value {
+    font-size: .85rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .spot__details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .spot__detail-block h4 {
+    font-family: var(--font-mono);
+    font-size: .65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--accent);
+    margin-bottom: var(--space-xs);
+  }
+
+  .spot__detail-block p {
+    font-size: .85rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
+
+  .spot__risks {
+    color: oklch(65% .08 25) !important;
+  }
+
+  @media (max-width: 768px) {
+    .spot__header {
+      flex-wrap: wrap;
+    }
+    .spot__meta {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .spot__details {
+      grid-template-columns: 1fr;
+    }
+    .spot__map-wrap {
+      padding-bottom: 60%;
+    }
+  }
+</style>
