@@ -12,7 +12,10 @@
         <div class="loader__cell" style={`--i: ${i}`} />
       ))}
     </div>
-    <div class="loader__label">Renegade Spots</div>
+    <div class="loader__icons">
+      <img src={`${import.meta.env.BASE_URL}brand/kntxt.png`} alt="KNTXT" class="loader__logo loader__logo--kntxt" />
+      <img src={`${import.meta.env.BASE_URL}brand/icon.svg`} alt="Clubstack" class="loader__logo loader__logo--cs" />
+    </div>
   </div>
 </div>
 
@@ -39,7 +42,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 2.5rem;
   }
 
   .loader__grid {
@@ -64,14 +67,22 @@
     40% { opacity: .3; transform: scale(.9); }
   }
 
-  .loader__label {
-    font-family: var(--font-mono);
-    font-size: .7rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: .15em;
-    color: var(--text-dim);
-    opacity: .6;
+  .loader__icons {
+    display: flex;
+    align-items: center;
+    gap: .2rem;
+    opacity: .75;
+  }
+
+  .loader__logo {
+    display: block;
+    height: 28px;
+    width: auto;
+  }
+
+  .loader__logo--cs {
+    filter: brightness(0) invert(1);
+    height: 28.5px;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -82,6 +93,13 @@
 <script>
   const loader = document.getElementById('loader');
   if (loader) {
-    setTimeout(() => loader.classList.add('is-hidden'), 800);
+    const imgs = loader.querySelectorAll('img');
+    const ready = Array.from(imgs).map(img =>
+      img.complete ? Promise.resolve() : new Promise(r => { img.onload = r; img.onerror = r; })
+    );
+    Promise.all(ready).then(() => {
+      setTimeout(() => loader.classList.add('is-hidden'), 600);
+    });
+    setTimeout(() => loader.classList.add('is-hidden'), 2000);
   }
 </script>

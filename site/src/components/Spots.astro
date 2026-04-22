@@ -31,43 +31,41 @@ import spots from '../data/spots.json';
             ></iframe>
           </div>
 
-          <div class="spot__grid">
-            <div class="spot__meta">
-              <div class="spot__meta-item">
-                <span class="spot__meta-label">Zoning</span>
-                <span class="spot__meta-value">{spot.zoning}</span>
-              </div>
-              <div class="spot__meta-item">
-                <span class="spot__meta-label">Transit</span>
-                <span class="spot__meta-value">{spot.transit}</span>
-              </div>
-              <div class="spot__meta-item">
-                <span class="spot__meta-label">Precinct</span>
-                <span class="spot__meta-value">{spot.precinct}</span>
-              </div>
-              <div class="spot__meta-item">
-                <span class="spot__meta-label">Views</span>
-                <span class="spot__meta-value">{spot.views}</span>
-              </div>
+          <div class="spot__meta">
+            <div class="spot__meta-item">
+              <span class="spot__meta-label">Zoning</span>
+              <span class="spot__meta-value">{spot.zoning}</span>
             </div>
+            <div class="spot__meta-item">
+              <span class="spot__meta-label">Transit</span>
+              <span class="spot__meta-value">{spot.transit}</span>
+            </div>
+            <div class="spot__meta-item">
+              <span class="spot__meta-label">Precinct</span>
+              <span class="spot__meta-value">{spot.precinct}</span>
+            </div>
+            <div class="spot__meta-item">
+              <span class="spot__meta-label">Views</span>
+              <span class="spot__meta-value">{spot.views}</span>
+            </div>
+          </div>
 
-            <div class="spot__details">
-              <div class="spot__detail-block">
-                <h4>Setup</h4>
-                <p>{spot.setup}</p>
-              </div>
-              <div class="spot__detail-block">
-                <h4>Exit Routes</h4>
-                <p>{spot.exit}</p>
-              </div>
-              <div class="spot__detail-block">
-                <h4>Why Here</h4>
-                <p>{spot.why}</p>
-              </div>
-              <div class="spot__detail-block">
-                <h4>Risks</h4>
-                <p class="spot__risks">{spot.risks}</p>
-              </div>
+          <div class="spot__details">
+            <div class="spot__detail-block">
+              <h4>Setup</h4>
+              <p>{spot.setup}</p>
+            </div>
+            <div class="spot__detail-block">
+              <h4>Exit Routes</h4>
+              <p>{spot.exit}</p>
+            </div>
+            <div class="spot__detail-block">
+              <h4>Why Here</h4>
+              <p>{spot.why}</p>
+            </div>
+            <div class="spot__detail-block">
+              <h4>Risks</h4>
+              <p class="spot__risks">{spot.risks}</p>
             </div>
           </div>
         </article>
@@ -101,7 +99,7 @@ import spots from '../data/spots.json';
   .spot__header {
     display: flex;
     align-items: center;
-    gap: var(--space-md);
+    gap: var(--space-sm);
     margin-bottom: var(--space-md);
   }
 
@@ -111,8 +109,8 @@ import spots from '../data/spots.json';
     font-weight: 700;
     color: var(--accent);
     background: oklch(75% .15 195 / .1);
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -122,20 +120,19 @@ import spots from '../data/spots.json';
 
   .spot__title-group {
     flex: 1;
-    display: flex;
-    align-items: baseline;
-    gap: var(--space-sm);
+    min-width: 0;
   }
 
   .spot__name {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--text);
+    line-height: 1.3;
   }
 
   .spot__hood {
     font-family: var(--font-mono);
-    font-size: .65rem;
+    font-size: .6rem;
     color: var(--text-dim);
     letter-spacing: .06em;
   }
@@ -171,17 +168,12 @@ import spots from '../data/spots.json';
     filter: saturate(1) brightness(.9) contrast(1);
   }
 
-  .spot__grid {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
-  }
-
   .spot__meta {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: var(--space-md);
     padding: var(--space-md);
+    margin-bottom: var(--space-lg);
     background: var(--bg-surface);
     border-radius: var(--radius-md);
     border: 1px solid oklch(18% .02 240);
@@ -203,7 +195,7 @@ import spots from '../data/spots.json';
   }
 
   .spot__meta-value {
-    font-size: .85rem;
+    font-size: .8rem;
     font-weight: 500;
     color: var(--text);
   }
@@ -225,7 +217,7 @@ import spots from '../data/spots.json';
   }
 
   .spot__detail-block p {
-    font-size: .85rem;
+    font-size: .8rem;
     line-height: 1.5;
     color: var(--text-muted);
   }
@@ -236,16 +228,25 @@ import spots from '../data/spots.json';
 
   @media (max-width: 768px) {
     .spot__header {
-      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .spot__title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
     }
     .spot__meta {
       grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-sm);
     }
     .spot__details {
       grid-template-columns: 1fr;
     }
     .spot__map-wrap {
-      padding-bottom: 60%;
+      padding-bottom: 65%;
+    }
+    .spot__tagline {
+      font-size: .85rem;
     }
   }
 </style>

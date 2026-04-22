@@ -4,14 +4,12 @@ import hero from '../data/hero.json';
 
 <section class="hero">
   <div class="container">
-    <div class="hero__meta">
-      {hero.tags.map((tag) => (
-        <span class="hero__tag">{tag}</span>
-      ))}
+    <div class="hero__lockup">
+      <img src={`${import.meta.env.BASE_URL}brand/kntxt-full.png`} alt="KNTXT" class="hero__wordmark hero__wordmark--kntxt" />
+      <span class="hero__x">&times;</span>
+      <img src={`${import.meta.env.BASE_URL}brand/wordmark.svg`} alt="Clubstack" class="hero__wordmark hero__wordmark--cs" />
     </div>
-    <div class="hero__title">
-      <h1>Renegade Spots</h1>
-    </div>
+    <h1 class="hero__title">Renegade Spots</h1>
     <div class="hero__details">
       {hero.details.map((d) => (
         <div class="hero__detail">
@@ -28,7 +26,7 @@ import hero from '../data/hero.json';
 <style>
   .hero {
     position: relative;
-    padding: 10rem 0 var(--space-2xl);
+    padding: 8rem 0 var(--space-2xl);
     overflow: hidden;
     border-bottom: 1px solid var(--border);
   }
@@ -43,33 +41,43 @@ import hero from '../data/hero.json';
     pointer-events: none;
   }
 
-  .hero__meta {
+  .hero__lockup {
     display: flex;
-    gap: var(--space-sm);
+    align-items: center;
+    gap: clamp(.75rem, 2vw, 1.5rem);
     margin-bottom: var(--space-lg);
+    opacity: .7;
   }
 
-  .hero__tag {
-    font-family: var(--font-mono);
-    font-size: .65rem;
-    font-weight: 500;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    padding: 4px 10px;
-    border: 1px solid oklch(75% .15 195 / .3);
-    border-radius: 100px;
+  .hero__wordmark {
+    display: block;
+    height: clamp(28px, 5vw, 44px);
+    width: auto;
+  }
+
+  .hero__wordmark--kntxt {
+    height: clamp(100px, 22vw, 200px);
+  }
+
+  .hero__wordmark--cs {
+    filter: brightness(0) invert(1);
+    opacity: .9;
+  }
+
+  .hero__x {
+    color: var(--text-dim);
+    font-size: clamp(1rem, 2vw, 1.6rem);
+    font-weight: 300;
+    line-height: 1;
+    flex-shrink: 0;
   }
 
   .hero__title {
-    margin-bottom: var(--space-xl);
-  }
-
-  .hero__title h1 {
-    font-size: clamp(2.5rem, 7vw, 4rem);
+    font-size: clamp(2rem, 7vw, 3.5rem);
     font-weight: 700;
     letter-spacing: -.03em;
     color: var(--text);
+    margin-bottom: var(--space-xl);
   }
 
   .hero__details {
@@ -107,7 +115,12 @@ import hero from '../data/hero.json';
   }
 
   @media (max-width: 768px) {
-    .hero { padding-top: 7rem; }
+    .hero {
+      padding-top: 6rem;
+    }
+    .hero__lockup {
+      gap: .5rem;
+    }
     .hero__details {
       grid-template-columns: repeat(2, 1fr);
       gap: var(--space-md);
