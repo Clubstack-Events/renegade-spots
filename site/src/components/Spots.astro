@@ -64,8 +64,8 @@ import spots from '../data/spots.json';
               <p>{spot.why}</p>
             </div>
             <div class="spot__detail-block">
-              <h4>Risks</h4>
-              <p class="spot__risks">{spot.risks}</p>
+              <h4>Considerations</h4>
+              <p>{spot.risks}</p>
             </div>
           </div>
         </article>
@@ -222,9 +222,6 @@ import spots from '../data/spots.json';
     color: var(--text-muted);
   }
 
-  .spot__risks {
-    color: oklch(65% .08 25) !important;
-  }
 
   @media (max-width: 768px) {
     .spot__header {
